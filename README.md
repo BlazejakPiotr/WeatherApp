@@ -10,8 +10,6 @@
     - [Step 2: Install node modules](#step-2-install-node-modules)
     - [Step 3: Setup environment variables](#step-3-setup-environment-variables)
     - [Step 4: Start application](#step-4-start-application)
-    - [Installing](#installing)
-  - [Usage ](#usage-)
 
 ## About <a name = "about"></a>
 
@@ -35,8 +33,7 @@ yarn install
 
 ### Step 3: Setup environment variables
 
-Go to [Openweathermap.org](<(https://openweathermap.org/)>) and generate APi KEY
-Create .env file in the root directory.
+Go to [Openweathermap.org](<(https://openweathermap.org/)>) and generate API KEY then create .env file in the root directory.
 .env example:
 
 ```bash
@@ -46,33 +43,18 @@ API_KEY=YOUR_API_KEY
 
 ### Step 4: Start application
 
-Go to [Openweathermap.org](<(https://openweathermap.org/)>) and generate APi KEY
-Create .env file in the root directory.
-.env example:
+```bash
+yarn start
+```
+
+For android
 
 ```bash
-API_URL=https://api.openweathermap.org/data/2.5
-API_KEY=YOUR_API_KEY
+yarn android
 ```
 
-### Installing
+For ios
 
-A step by step series of examples that tell you how to get a development env running.
-
-Say what the step will be
-
+```bash
+yarn ios
 ```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo.
-
-## Usage <a name = "usage"></a>
-
-Add notes about how to use the system.
