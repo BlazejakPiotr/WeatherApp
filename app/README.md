@@ -35,7 +35,7 @@ yarn install
 
 ### Step 3: Setup environment variables
 
-Go to [Openweathermap.org](<(https://openweathermap.org/)>) and generate APi KEY
+Go to https://openweathermap.org/ and generate APi KEY
 Create .env file in the root directory.
 .env example:
 
@@ -46,13 +46,18 @@ API_KEY=YOUR_API_KEY
 
 ### Step 4: Start application
 
-Go to [Openweathermap.org](<(https://openweathermap.org/)>) and generate APi KEY
-Create .env file in the root directory.
-.env example:
+```bash
+yarn start
+```
+
+For android
 
 ```bash
-API_URL=https://api.openweathermap.org/data/2.5
-API_KEY=YOUR_API_KEY
+yarn android
+```
+
+```bash
+yarn ios
 ```
 
 ### Installing
