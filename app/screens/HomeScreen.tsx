@@ -7,7 +7,7 @@ import DropIconSvg from '../assets/icons/DropIcon';
 import WindIconSvg from '../assets/icons/WindIcon';
 import CloudIconSvg from '../assets/icons/CloudIcon';
 import {useQuery} from '@tanstack/react-query';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, SafeAreaView, Text, View} from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 import SmallWeatherTile from '../components/SmallWeatherTile';
 
@@ -21,25 +21,35 @@ function HomeScreen() {
   }, []);
 
   const {isPending, error, data} = useQuery({
-    queryKey: [],
+    queryKey: ['weather', coords],
     queryFn: async () => await getWeather({lat: coords?.lat, lon: coords?.lon}),
   });
 
   if (isPending) {
-    return <Text>Loading...</Text>;
+    return (
+      <View style={[styles.column, styles.container]}>
+        <Text style={styles.details}>Loading...</Text>
+      </View>
+    );
   }
 
   if (error) {
-    return <Text>An error has occurred: {error.message}</Text>;
+    return (
+      <View style={[styles.column, styles.container]}>
+        <Text style={styles.details}>
+          An error has occurred: {error.message}
+        </Text>
+      </View>
+    );
   }
 
   const colors = getBackgroundImg(data?.list[0]?.weather[0].main);
 
   return (
-    <>
+    <SafeAreaView style={styles.container}>
       <LinearGradient style={styles.container} colors={colors}>
         <View style={{alignItems: 'center'}}>
-          {/* <Text>{data.list[0].dt_txt}</Text> */}
+          <Text>{data.list[0].dt_txt}</Text>
           <Text style={styles.city}>{data?.city.name}</Text>
           <Image
             source={icons[data?.list[0].weather[0].main as Background]}
@@ -76,7 +86,7 @@ function HomeScreen() {
           )}
         </View>
       </LinearGradient>
-    </>
+    </SafeAreaView>
   );
 }
 
@@ -86,18 +96,9 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'space-evenly',
+    backgroundColor: '#000',
   },
-  topBar: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    left: 0,
-    padding: 10,
-    flexWrap: 'nowrap',
-  },
+
   column: {
     justifyContent: 'center',
     alignItems: 'center',
